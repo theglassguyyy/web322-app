@@ -1,0 +1,20 @@
+{
+  "name": "web322-app",
+  "version": "1.0.0",
+  "description": "WEB322_Assignment2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.senecapolytechnic.ca/asapkota9/web322-app"
+  },
+  "author": "Aashish Sapkota",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "keywords": []
+}
