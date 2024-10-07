@@ -1,0 +1,174 @@
+/** Catchy Colors Theme **/
+
+:root {
+  --background-body: #f0f8ff; /* Light blue body */
+  --background: #ffffff; /* White background */
+  --background-alt: #ffe4e1; /* Light pink for alternate sections */
+  --selection: #ff6347; /* Tomato red selection */
+  --text-main: #2c3e50; /* Dark blue text */
+  --text-bright: #000; /* Black text */
+  --text-muted: #8e44ad; /* Purple muted text */
+  --links: #e74c3c; /* Red links */
+  --focus: #2980b9; /* Blue focus outline */
+  --border: #c0392b; /* Red border */
+  --code: #8e44ad; /* Purple for code */
+  --animation-duration: 0.2s;
+  --button-base: #f39c12; /* Orange base color */
+  --button-hover: #d35400; /* Darker orange for hover */
+  --scrollbar-thumb: #3498db; /* Blue scrollbar */
+  --scrollbar-thumb-hover: #2ecc71; /* Green on hover */
+  --form-placeholder: #7f8c8d; /* Grey placeholder */
+  --form-text: #2c3e50; /* Dark blue text for form */
+  --variable: #e67e22; /* Orange variable */
+  --highlight: #f1c40f; /* Yellow highlight */
+  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23161f27'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-body: #2c3e50; /* Dark blue body */
+    --background: #34495e; /* Slightly lighter dark blue */
+    --background-alt: #2a2d35; /* Almost black alternate background */
+    --selection: #e74c3c; /* Bright red selection */
+    --text-main: #ecf0f1; /* Very light grey text */
+    --text-bright: #fff; /* White text */
+    --text-muted: #bdc3c7; /* Light grey muted text */
+    --links: #e67e22; /* Bright orange links */
+    --focus: #f39c12; /* Vibrant orange for focus */
+    --border: #3498db; /* Bright blue border */
+    --code: #f1c40f; /* Yellow for code */
+    --animation-duration: 0.2s;
+    --button-base: #2980b9; /* Deep blue button */
+    --button-hover: #1abc9c; /* Greenish-blue hover */
+    --scrollbar-thumb: #2ecc71; /* Green scrollbar */
+    --scrollbar-thumb-hover: #e74c3c; /* Red on hover */
+    --form-placeholder: #95a5a6; /* Light grey placeholder */
+    --form-text: #ffffff; /* White form text */
+    --variable: #ff6347; /* Tomato red variable */
+    --highlight: #ffeb3b; /* Bright yellow highlight */
+    --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23efefef'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
+  }
+}
+
+html {
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  scrollbar-width: thin;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  word-wrap: break-word;
+  color: var(--text-main);
+  background: var(--background-body);
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background-body);
+    color: var(--text-main);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--links);
+}
+
+a:hover {
+  color: var(--text-bright);
+  text-decoration: underline;
+}
+
+button {
+  background-color: var(--button-base);
+  color: var(--text-bright);
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  transition: background-color var(--animation-duration), transform var(--animation-duration);
+}
+
+button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-3px);
+}
+
+input,
+textarea,
+select {
+  background: var(--background-alt);
+  color: var(--form-text);
+  border: 2px solid var(--border);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color var(--animation-duration), box-shadow var(--animation-duration);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 5px var(--focus);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-bright);
+}
+
+code {
+  background: var(--background-alt);
+  color: var(--code);
+  padding: 5px;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+strong {
+  color: var(--text-bright);
+}
+
+blockquote {
+  background: var(--background-alt);
+  border-left: 5px solid var(--focus);
+  margin: 1em 0;
+  padding: 1em;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+mark {
+  background-color: var(--highlight);
+  color: var(--text-main);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
