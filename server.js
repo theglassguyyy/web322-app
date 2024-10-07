@@ -6,7 +6,11 @@ I declare that this assignment is my own work in accordance with Seneca  Academi
 Name: Aashish Sapkota 
 Student ID: 147442222 
 Date: 2024-10-07
+<<<<<<< HEAD
+Cyclic Web App URL: https://513f8293-163a-43df-9b3d-d8db95fc53ab-00-ay1pcxjdn78w.janeway.replit.dev/about
+=======
 Cyclic Web App URL: 
+>>>>>>> 53b6bdd00b770789b684644d3696d851c15595ed
 GitHub Repository URL: https://github.com/theglassguyyy/web322-app
 
 ********************************************************************************/ 
