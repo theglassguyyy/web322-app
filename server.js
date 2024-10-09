@@ -6,11 +6,10 @@ I declare that this assignment is my own work in accordance with Seneca  Academi
 Name: Aashish Sapkota 
 Student ID: 147442222 
 Date: 2024-10-07
-Cyclic Web App URL: 
+Cyclic Web App URL: https://lapis-inquisitive-radius.glitch.me/about
 GitHub Repository URL: https://github.com/theglassguyyy/web322-app
 
 ********************************************************************************/ 
-
 // server.js
 const express = require('express');
 const path = require('path');
