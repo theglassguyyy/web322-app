@@ -9,12 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.senecapolytechnic.ca/asapkota9/web322-app"
+    "url": "https://github.com/theglassguyyy/web322-app"
   },
   "author": "Aashish Sapkota",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0"
+    "cloudinary": "^2.5.1",
+    "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1",
+    "streamifier": "^0.1.1"
   },
   "keywords": []
 }

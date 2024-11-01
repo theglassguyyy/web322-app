@@ -1,83 +1,153 @@
-/*********************************************************************************
-
-WEB322 – Assignment 02
-I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part *  of this assignment has been copied manually or electronically from any other source (including 3rd party web sites) or distributed to other students.
-
+/********************************************************************************* 
+WEB322 – Assignment 03
+I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part 
+of this assignment has been copied manually or electronically from any other source 
+(including 3rd party web sites) or distributed to other students.
 Name: Aashish Sapkota 
 Student ID: 147442222 
-Date: 2024-10-07
+Date: 2024-10-26
 Cyclic Web App URL: https://lapis-inquisitive-radius.glitch.me/about
 GitHub Repository URL: https://github.com/theglassguyyy/web322-app
-
 ********************************************************************************/ 
-// server.js
-const express = require('express');
-const path = require('path');
-const storeService = require('./store-service'); // Import the store-service.js module
+
+const express = require("express");
+const path = require("path");
+const storeService = require("./store-service");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const streamifier = require("streamifier");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
-// Serve static files from the "public" folder
+cloudinary.config({
+    cloud_name: "dathhpf6m",
+    api_key: "787859497635963",
+    api_secret: "0DLkivquuJMun_MkEQQap7b0nfs",
+    secure: true
+});
+
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Redirect the root ("/") to "/about"
-app.get('/', (req, res) => {
-  res.redirect('/about');
+app.get('/items/add', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/addItem.html'));
 });
 
-// Serve the "/about" page
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'about.html'));
+app.get("/", (req, res) => {
+    res.redirect("/about");
 });
 
-// "/shop" route - return all published items
-app.get('/shop', (req, res) => {
-  storeService.getPublishedItems()
-    .then(data => {
-      res.json(data); // Send the published items as a JSON response
-    })
-    .catch(err => {
-      res.status(500).json({ message: err }); // Send an error message if the operation fails
-    });
+app.get("/about", (req, res) => {
+    res.sendFile(path.join(__dirname, "/views/about.html"));
 });
 
-// "/items" route - return all items
-app.get('/items', (req, res) => {
-  storeService.getAllItems()
-    .then(data => {
-      res.json(data); // Send all items as a JSON response
-    })
-    .catch(err => {
-      res.status(500).json({ message: err }); // Send an error message if the operation fails
-    });
+app.get("/shop", (req, res) => {
+    storeService.getPublishedItems()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ message: err });
+        });
 });
 
-// "/categories" route - return all categories
-app.get('/categories', (req, res) => {
-  storeService.getCategories()
-    .then(data => {
-      res.json(data); // Send all categories as a JSON response
-    })
-    .catch(err => {
-      res.status(500).json({ message: err }); // Send an error message if the operation fails
-    });
+app.get("/items", (req, res) => {
+    const { category, minDate } = req.query;
+
+    if (category) {
+        storeService.getItemsByCategory(parseInt(category))
+            .then((data) => res.json(data))
+            .catch((err) => res.status(404).json({ message: err }));
+    } else if (minDate) {
+        storeService.getItemsByMinDate(minDate)
+            .then((data) => res.json(data))
+            .catch((err) => res.status(404).json({ message: err }));
+    } else {
+        storeService.getAllItems()
+            .then((data) => res.json(data))
+            .catch((err) => res.status(404).json({ message: err }));
+    }
 });
 
-// Handle unmatched routes - custom 404 response
+app.get("/categories", (req, res) => {
+    storeService.getCategories()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ message: err });
+        });
+});
+
+const upload = multer();
+
+app.post('/items/add', upload.single('featureImage'), (req, res) => {
+    if (req.file) {
+        let streamUpload = (req) => {
+            return new Promise((resolve, reject) => {
+                let stream = cloudinary.uploader.upload_stream(
+                    (error, result) => {
+                        if (result) {
+                            resolve(result);
+                        } else {
+                            reject(error);
+                        }
+                    }
+                );
+                streamifier.createReadStream(req.file.buffer).pipe(stream);
+            });
+        };
+
+        async function upload(req) {
+            let result = await streamUpload(req);
+            console.log(result);
+            return result;
+        }
+
+        upload(req).then((uploaded) => {
+            processItem(uploaded.url);
+        }).catch((error) => {
+            console.error("Error uploading image:", error);
+            res.redirect('/items');
+        });
+    } else {
+        processItem("");
+    }
+
+    function processItem(imageUrl) {
+        req.body.featureImage = imageUrl;
+        storeService.addItem(req.body).then((newItem) => {
+            res.redirect('/items');
+        }).catch((err) => {
+            console.error("Error adding item:", err);
+            res.redirect('/items');
+        });
+    }
+});
+
 app.use((req, res) => {
-  res.status(404).send('Page Not Found');
+    res.status(404).send("Page Not Found");
 });
 
-// Start the server only if initialize() is successful
 storeService.initialize()
-  .then(() => {
-    // Only call app.listen() if initialization is successful
-    app.listen(PORT, () => {
-      console.log(`Express http server listening on port ${PORT}`);
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`Express http server listening on ${port}`);
+        });
+    })
+    .catch((err) => {
+        console.error(`Failed to initialize store service: ${err}`);
     });
-  })
-  .catch(err => {
-    // If initialization fails, log the error and do not start the server
-    console.error(`Failed to initialize data: ${err}`);
-  });
+
+app.get("/item/:value", (req, res) => {
+    const id = req.params.value;
+    storeService.getItemById(id)
+        .then((item) => {
+            res.json(item);
+        })
+        .catch((err) => {
+            res.status(404).json({ message: err });
+        });
+});
