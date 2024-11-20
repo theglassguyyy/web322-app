@@ -1,0 +1,102 @@
+[
+   {
+      "id":1,
+      "category":1,
+      "postDate":"2023-05-14",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":9.99,
+      "title":"Lawnmower",
+      "body":"A reliable lawnmower to keep your garden neat and tidy. Designed for easy handling and effective grass cutting.",
+      "published":true
+   },
+   {
+      "id":2,
+      "category":1,
+      "postDate":"2023-05-15",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":19.99,
+      "title":"Weber BBQ",
+      "body":"Enjoy your summer cookouts with this high-quality Weber BBQ. Perfect for grilling meat, vegetables, and more.",
+      "published":true
+   },
+   {
+      "id":3,
+      "category":2,
+      "postDate":"2023-05-16",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":439.99,
+      "title":"PS5",
+      "body":"Experience next-gen gaming with the PlayStation 5. Stunning graphics, lightning-fast loading, and immersive gameplay.",
+      "published":true
+   },
+   {
+      "id":4,
+      "category":2,
+      "postDate":"2023-05-17",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":459.99,
+      "title":"XBOX",
+      "body":"Dive into the ultimate gaming experience with the Xbox Series X. Play your favorite games with stunning performance.",
+      "published":true
+   },
+   {
+      "id":5,
+      "category":3,
+      "postDate":"2023-05-18",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":39.99,
+      "title":"TShirt",
+      "body":"A comfortable and stylish t-shirt made from 100% cotton. Perfect for casual wear or outdoor activities.",
+      "published":true
+   },
+   {
+      "id":6,
+      "category":3,
+      "postDate":"2023-05-19",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":29.99,
+      "title":"Shorts",
+      "body":"Stay cool and relaxed with these lightweight shorts. Ideal for summer outings or sports activities.",
+      "published":true
+   },
+   {
+      "id":7,
+      "category":4,
+      "postDate":"2023-05-20",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":19.99,
+      "title":"Baseball",
+      "body":"High-quality baseball for recreational games or professional practice. Durable and perfectly weighted.",
+      "published":true
+   },
+   {
+      "id":8,
+      "category":4,
+      "postDate":"2023-05-21",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":99.99,
+      "title":"Soccer Ball",
+      "body":"Premium soccer ball for matches and practice. Designed for durability and consistent performance on the field.",
+      "published":true
+   },
+   {
+      "id":9,
+      "category":5,
+      "postDate":"2023-05-16",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":99.99,
+      "title":"Dog Food",
+      "body":"Nutritious dog food packed with essential vitamins and minerals. Keeps your furry friend healthy and happy.",
+      "published":true
+   },
+   {
+      "id":10,
+      "category":5,
+      "postDate":"2023-05-16",
+      "featureImage":"https://dummyimage.com/200x200/000/fff",
+      "price":9.99,
+      "title":"Fish Food",
+      "body":"Specially formulated fish food to promote vibrant colors and healthy growth in your aquatic pets.",
+      "published":true
+   }
+]
