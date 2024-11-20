@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Categories</h2>
+        <hr />
+        
+        <!-- Check if there are categories -->
+        {{#if categories.length}}
+            <!-- Create a responsive table -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Category ID</th>
+                            <th>Category Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each categories}}
+                            <tr>
+                                <!-- Make Category ID clickable -->
+                                <td><a href="/items?category={{this.id}}">{{this.id}}</a></td>
+                                <!-- Make Category Name clickable -->
+                                <td><a href="/items?category={{this.id}}">{{this.category}}</a></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{else}}
+            <!-- Display message if no categories are available -->
+            <div class="col-md-12 text-center">
+                <strong>{{message}}</strong>
+            </div>
+        {{/if}}
+    </div>
+</div>

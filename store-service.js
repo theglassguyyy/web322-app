@@ -1,42 +1,32 @@
-/********************************************************************************* 
-WEB322 – Assignment 03
-I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part 
-of this assignment has been copied manually or electronically from any other source 
-(including 3rd party web sites) or distributed to other students.
-Name: Aashish Sapkota 
-Student ID: 147442222 
-Date: 2024-10-26
-Cyclic Web App URL: https://lapis-inquisitive-radius.glitch.me/about
-GitHub Repository URL: https://github.com/theglassguyyy/web322-app
-********************************************************************************/
-
-const fs = require('fs').promises;
-const path = require('path');
+const fs = require("fs").promises;
+const path = require("path");
 
 let items = [];
 let categories = [];
 
+// Initialize the service by loading JSON files
 function initialize() {
     return Promise.all([
-        fs.readFile(path.join(__dirname, 'data', 'items.json'), 'utf8')
-            .then(data => {
+        fs.readFile(path.join(__dirname, "data", "items.json"), "utf8")
+            .then((data) => {
                 items = JSON.parse(data);
             }),
-        fs.readFile(path.join(__dirname, 'data', 'categories.json'), 'utf8')
-            .then(data => {
+        fs.readFile(path.join(__dirname, "data", "categories.json"), "utf8")
+            .then((data) => {
                 categories = JSON.parse(data);
-            })
+            }),
     ])
-    .then(() => {
-        if (items.length === 0 || categories.length === 0) {
-            throw new Error("Data is empty");
-        }
-    })
-    .catch(err => {
-        throw new Error(`Unable to read file: ${err.message}`);
-    });
+        .then(() => {
+            if (!items.length || !categories.length) {
+                throw new Error("Data is empty");
+            }
+        })
+        .catch((err) => {
+            throw new Error(`Unable to read file: ${err.message}`);
+        });
 }
 
+// Get all items
 function getAllItems() {
     return new Promise((resolve, reject) => {
         if (items.length > 0) {
@@ -47,9 +37,10 @@ function getAllItems() {
     });
 }
 
+// Get all published items
 function getPublishedItems() {
     return new Promise((resolve, reject) => {
-        const publishedItems = items.filter(item => item.published === true);
+        const publishedItems = items.filter((item) => item.published === true);
         if (publishedItems.length > 0) {
             resolve(publishedItems);
         } else {
@@ -58,6 +49,7 @@ function getPublishedItems() {
     });
 }
 
+// Get all categories
 function getCategories() {
     return new Promise((resolve, reject) => {
         if (categories.length > 0) {
@@ -68,9 +60,24 @@ function getCategories() {
     });
 }
 
+// Get published items by category
+function getPublishedItemsByCategory(category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(
+            (item) => item.published === true && item.category === parseInt(category)
+        );
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("No results returned");
+        }
+    });
+}
+
+// Get items by category
 function getItemsByCategory(category) {
     return new Promise((resolve, reject) => {
-        const filteredItems = items.filter(item => item.category === parseInt(category));
+        const filteredItems = items.filter((item) => item.category === parseInt(category));
         if (filteredItems.length > 0) {
             resolve(filteredItems);
         } else {
@@ -79,9 +86,12 @@ function getItemsByCategory(category) {
     });
 }
 
+// Get items by minimum date
 function getItemsByMinDate(minDateStr) {
     return new Promise((resolve, reject) => {
-        const filteredItems = items.filter(item => new Date(item.postDate) >= new Date(minDateStr));
+        const filteredItems = items.filter(
+            (item) => new Date(item.postDate) >= new Date(minDateStr)
+        );
         if (filteredItems.length > 0) {
             resolve(filteredItems);
         } else {
@@ -90,9 +100,10 @@ function getItemsByMinDate(minDateStr) {
     });
 }
 
+// Get item by ID
 function getItemById(id) {
     return new Promise((resolve, reject) => {
-        const item = items.find(item => item.id === parseInt(id));
+        const item = items.find((item) => item.id === parseInt(id));
         if (item) {
             resolve(item);
         } else {
@@ -101,23 +112,38 @@ function getItemById(id) {
     });
 }
 
+// Add a new item
 function addItem(itemData) {
     return new Promise((resolve, reject) => {
-        itemData.published = itemData.published !== undefined;
-        itemData.id = items.length + 1;
-        items.push(itemData);
-        resolve(itemData);
+        if (!itemData) {
+            reject("No data provided");
+        } else {
+            // Add current date as postDate
+            itemData.postDate = new Date().toISOString().split("T")[0];
+
+            // Push new item to items array
+            items.push(itemData);
+
+            // Persist to items.json
+            fs.writeFile(
+                path.join(__dirname, "data", "items.json"),
+                JSON.stringify(items, null, 2)
+            )
+                .then(() => resolve())
+                .catch((err) => reject(`Failed to add item: ${err.message}`));
+        }
     });
 }
 
-
+// Export all functions
 module.exports = {
     initialize,
     getAllItems,
     getPublishedItems,
     getCategories,
+    getPublishedItemsByCategory,
     getItemsByCategory,
     getItemsByMinDate,
     getItemById,
-    addItem
+    addItem,
 };

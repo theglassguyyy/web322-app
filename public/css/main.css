@@ -1,63 +1,55 @@
-/** Catchy Colors Theme **/
-
 :root {
-  --background-body: #f0f8ff; /* Light blue body */
-  --background: #ffffff; /* White background */
-  --background-alt: #ffe4e1; /* Light pink for alternate sections */
-  --selection: #ff6347; /* Tomato red selection */
-  --text-main: #2c3e50; /* Dark blue text */
-  --text-bright: #000; /* Black text */
-  --text-muted: #8e44ad; /* Purple muted text */
-  --links: #e74c3c; /* Red links */
-  --focus: #2980b9; /* Blue focus outline */
-  --border: #c0392b; /* Red border */
-  --code: #8e44ad; /* Purple for code */
-  --animation-duration: 0.2s;
-  --button-base: #f39c12; /* Orange base color */
-  --button-hover: #d35400; /* Darker orange for hover */
-  --scrollbar-thumb: #3498db; /* Blue scrollbar */
-  --scrollbar-thumb-hover: #2ecc71; /* Green on hover */
+  --background-body: #eef5f9; /* Soft sky blue */
+  --background: #ffffff; /* Pure white background */
+  --background-alt: #fdf6f0; /* Warm light beige for alternate sections */
+  --selection: #f39c12; /* Vibrant orange selection */
+  --text-main: #34495e; /* Muted navy blue for primary text */
+  --text-bright: #2c3e50; /* Deep navy blue for headers */
+  --text-muted: #95a5a6; /* Soft grey muted text */
+  --links: #1abc9c; /* Calm green links */
+  --focus: #16a085; /* Teal focus outline */
+  --border: #bdc3c7; /* Light grey border */
+  --code: #e67e22; /* Bright orange for code */
+  --animation-duration: 0.3s;
+  --button-base: #3498db; /* Bright blue base button */
+  --button-hover: #2980b9; /* Deeper blue hover effect */
+  --scrollbar-thumb: #2ecc71; /* Green scrollbar */
+  --scrollbar-thumb-hover: #27ae60; /* Darker green on hover */
   --form-placeholder: #7f8c8d; /* Grey placeholder */
-  --form-text: #2c3e50; /* Dark blue text for form */
-  --variable: #e67e22; /* Orange variable */
-  --highlight: #f1c40f; /* Yellow highlight */
-  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23161f27'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
+  --form-text: #34495e; /* Muted navy for form text */
+  --variable: #d35400; /* Burnt orange variable */
+  --highlight: #f1c40f; /* Bright yellow highlight */
+  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2334495e'%3E%3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-body: #2c3e50; /* Dark blue body */
-    --background: #34495e; /* Slightly lighter dark blue */
-    --background-alt: #2a2d35; /* Almost black alternate background */
+    --background-body: #1a1a1a; /* Deep grey body */
+    --background: #333333; /* Lighter dark grey */
+    --background-alt: #2d2d2d; /* Alternate section slightly lighter grey */
     --selection: #e74c3c; /* Bright red selection */
-    --text-main: #ecf0f1; /* Very light grey text */
-    --text-bright: #fff; /* White text */
-    --text-muted: #bdc3c7; /* Light grey muted text */
-    --links: #e67e22; /* Bright orange links */
-    --focus: #f39c12; /* Vibrant orange for focus */
-    --border: #3498db; /* Bright blue border */
-    --code: #f1c40f; /* Yellow for code */
-    --animation-duration: 0.2s;
-    --button-base: #2980b9; /* Deep blue button */
-    --button-hover: #1abc9c; /* Greenish-blue hover */
-    --scrollbar-thumb: #2ecc71; /* Green scrollbar */
-    --scrollbar-thumb-hover: #e74c3c; /* Red on hover */
-    --form-placeholder: #95a5a6; /* Light grey placeholder */
-    --form-text: #ffffff; /* White form text */
-    --variable: #ff6347; /* Tomato red variable */
-    --highlight: #ffeb3b; /* Bright yellow highlight */
-    --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23efefef'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
+    --text-main: #ecf0f1; /* Light grey text */
+    --text-bright: #ffffff; /* Pure white text for headers */
+    --text-muted: #95a5a6; /* Muted grey text */
+    --links: #1abc9c; /* Teal links */
+    --focus: #f39c12; /* Vibrant orange focus outline */
+    --border: #95a5a6; /* Muted grey border */
+    --button-base: #2980b9; /* Deep blue buttons */
+    --button-hover: #1abc9c; /* Teal hover buttons */
+    --scrollbar-thumb: #3498db; /* Bright blue scrollbar */
+    --scrollbar-thumb-hover: #2ecc71; /* Green scrollbar hover */
   }
 }
 
 html {
+  font-size: 16px;
   scrollbar-color: var(--scrollbar-thumb) var(--background-body);
   scrollbar-width: thin;
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
+  line-height: 1.8;
   max-width: 1000px;
   margin: 40px auto;
   padding: 0 20px;
@@ -65,22 +57,17 @@ body {
   color: var(--text-main);
   background: var(--background-body);
   text-rendering: optimizeLegibility;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--background-body);
-    color: var(--text-main);
-  }
+  transition: background var(--animation-duration), color var(--animation-duration);
 }
 
 a {
   text-decoration: none;
   color: var(--links);
+  font-weight: 600;
 }
 
 a:hover {
-  color: var(--text-bright);
+  color: var(--focus);
   text-decoration: underline;
 }
 
@@ -90,8 +77,9 @@ button {
   border: none;
   padding: 10px 20px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background-color var(--animation-duration), transform var(--animation-duration);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -110,6 +98,7 @@ select {
   border-radius: 5px;
   outline: none;
   transition: border-color var(--animation-duration), box-shadow var(--animation-duration);
+  font-size: 1rem;
 }
 
 input:focus,
@@ -125,19 +114,18 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 10px 0;
+  font-weight: bold;
   color: var(--text-bright);
+  line-height: 1.3;
 }
 
 code {
   background: var(--background-alt);
   color: var(--code);
   padding: 5px;
-  border-radius: 4px;
+  border-radius: 5px;
   font-family: "Courier New", Courier, monospace;
-}
-
-strong {
-  color: var(--text-bright);
 }
 
 blockquote {
@@ -147,6 +135,7 @@ blockquote {
   padding: 1em;
   color: var(--text-muted);
   font-style: italic;
+  border-radius: 4px;
 }
 
 mark {

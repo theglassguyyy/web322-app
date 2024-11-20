@@ -1,0 +1,124 @@
+/* Main CSS for the eCommerce Web App */
+
+/* Reset some default margins/padding */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f0e68c; /* Light golden background */
+    color: #333;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #ff6347; /* Tomato */
+    border-bottom: 2px solid #00fa9a; /* Medium Spring Green */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.navbar-nav .nav-link {
+    color: #f0e68c !important; /* Light golden links */
+    font-size: 1.1em;
+}
+
+/* Link Hover Effect */
+.navbar-nav .nav-link:hover {
+    color: #00fa9a !important; /* Medium Spring Green on hover */
+}
+
+/* Main Content Area */
+.container {
+    margin-top: 70px;
+}
+
+/* Left Column (About Section) */
+.main h2 {
+    color: #ff4500; /* OrangeRed */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.main p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #2e8b57; /* SeaGreen */
+}
+
+/* Right Column (Coming Soon Section) */
+aside h2 {
+    color: #4682b4; /* SteelBlue */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+aside p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #d2691e; /* Chocolate */
+}
+
+/* Footer */
+footer {
+    background-color: #00ced1; /* DarkTurquoise */
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Additional customizations */
+h1, h2 {
+    font-weight: 700;
+    color: #ff69b4; /* HotPink */
+}
+
+a {
+    text-decoration: none;
+    color: #4682b4; /* SteelBlue */
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff4500; /* OrangeRed */
+}
+/* Make active nav link bold */
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #ffffff !important; /* Ensure it's visibly different */
+}
+
+/* Navigation Bar Spacing */
+.navbar-nav {
+    display: flex; /* Use Flexbox for alignment */
+    justify-content: space-around; /* Equal spacing between items */
+    align-items: center; /* Vertically center items */
+    width: 100%; /* Spread items across the full width */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    list-style: none; /* Remove bullet points */
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 20px; /* Adjust the spacing around the links */
+    text-align: center; /* Center the link text */
+    font-size: 1.2em; /* Slightly larger font for visibility */
+}
+
+.navbar {
+    display: flex; /* Flexbox for the navbar */
+    justify-content: space-between; /* Space between brand and nav links */
+    align-items: center; /* Vertically align items */
+    padding: 10px 20px; /* Padding inside the navbar */
+}
