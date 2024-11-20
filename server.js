@@ -1,5 +1,4 @@
 /********************************************************************************* 
-
 WEB322 – Assignment 04
 I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part
 of this assignment has been copied manually or electronically from any other source (including 3rd
@@ -42,7 +41,7 @@ app.engine(
                 return lvalue != rvalue ? options.inverse(this) : options.fn(this);
             },
             safeHTML: function (context) {
-                return new Handlebars.SafeString(context);
+                return new exphbs.SafeString(context);
             },
         },
     })
@@ -161,7 +160,7 @@ app.get("/items", async (req, res) => {
     }
 });
 
-// Categories route
+// `/categories` Route
 app.get("/categories", async (req, res) => {
     try {
         const categories = await storeService.getCategories();
@@ -202,6 +201,18 @@ app.post("/items/add", upload.single("featureImage"), (req, res) => {
             .then(() => res.redirect("/items"))
             .catch(() => res.redirect("/items"));
     }
+});
+
+// `/item/:value` Route
+app.get("/item/:value", (req, res) => {
+    const id = req.params.value;
+    storeService.getItemById(id)
+        .then((item) => {
+            res.json(item);
+        })
+        .catch((err) => {
+            res.status(404).json({ message: err });
+        });
 });
 
 // 404 Handler
