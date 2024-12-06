@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>
+      Categories
+      <a href="/categories/add" class="btn btn-success pull-right">Add Category</a>
+    </h2>
+    <hr />
+    {{#if categories}}
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Category ID</th>
+              <th>Category Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each categories}}
+              <tr>
+                <td>
+                  <a href="/items?category={{this.id}}">{{this.id}}</a>
+                </td>
+                <td>
+                  <a href="/items?category={{this.id}}">{{this.category}}</a>
+                </td>
+                <td>
+                  <form action="/categories/delete/{{this.id}}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{else}}
+      <div class="col-md-12 text-center">
+        <p class="text-muted">No categories available. Please add a new category.</p>
+      </div>
+    {{/if}}
+  </div>
+</div>
