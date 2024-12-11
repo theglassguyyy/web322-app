@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "server.js"
+      }
+    ],
+    "env": {
+    "PGHOST": "ep-lucky-morning-a5sparmj.us-east-2.aws.neon.tech",
+    "PGDATABASE": "neondb",
+    "PGUSER": "neondb_owner",
+    "PGPASSWORD": "IKyGJ9f0RcvE"
+  }
+  }

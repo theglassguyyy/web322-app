@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    {{#if successMessage}}
+    <p style="color: green;">{{successMessage}}</p>
+    <a href="/login">Go to Login</a>
+    {{else}}
+    <form action="/register" method="POST">
+        <input type="text" name="userName" placeholder="User Name" value="{{userName}}" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="password2" placeholder="Confirm Password" required />
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- Display error message if present -->
+    {{#if errorMessage}}
+    <p style="color: red;">{{errorMessage}}</p>
+    {{/if}}
+    {{/if}}
+</body>
+</html>

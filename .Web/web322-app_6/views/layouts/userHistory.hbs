@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User History</title>
+</head>
+<body>
+    <h1>{{userName}} ({{email}}) - Login History</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Login Date/Time</th>
+                <th>User Agent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each loginHistory}}
+            <tr>
+                <td>{{this.dateTime}}</td>
+                <td>{{this.userAgent}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
